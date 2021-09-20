@@ -3,10 +3,38 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UMR_UI"
+        xmlns:local="clr-namespace:UMR_UI.SampleData"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ÜMR-Hauptansicht" Height="450" Width="800">
+    <Window.DataContext>
+        <local:UeMRHauptansichtSampleData/>
+    </Window.DataContext>
+    
     <Grid>
+
+        <DockPanel>
+            <StackPanel>
+                <Label>Übungs Moment Teilnehmer</Label>
+                <DataGrid ItemsSource="{Binding Teilnehmerliste}"
+                          AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Übungsmoment"
+                                            Binding="{Binding Uebungsmoment}"/>
+                        <DataGridTextColumn Header="Vorname"
+                                            Binding="{Binding Vorname}"/>
+                        <DataGridTextColumn Header="Nachname"
+                                            Binding="{Binding Name}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <StackPanel>
+                <Label Content="{Binding UeMRTeilnehmerliste}"/>
+                <ListBox ItemsSource="{Binding Path=UeMRTeilnehmerliste}" DisplayMemberPath="Name"
+                         IsSynchronizedWithCurrentItem="true"/>
+            </StackPanel>
+            
+        </DockPanel>
 
     </Grid>
 </Window>
