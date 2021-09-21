@@ -10,7 +10,7 @@ namespace UMR_UI.SampleData
     {       
         public List<Teilnehmer> Teilnehmerliste { get; set; } = new()
         {
-            new Teilnehmer { Name = "Koch", Vorname = "Michael", Uebungsmoment = "LernMail 21/21" },
+            new Teilnehmer { Name = "Koch", Vorname = "Michael", Uebungsmoment = "LernMail 21/21", zweiWochenAlt = true},
             new Teilnehmer { Name = "Peter", Vorname = "Michael", Uebungsmoment = "LernMail 21/21" },
             new Teilnehmer { Name = "Green", Vorname = "John", Uebungsmoment = "LernMail 21/21" },
             new Teilnehmer { Name = "Brown", Vorname = "Jackson", Uebungsmoment = "LernMail 21/21" },
@@ -25,5 +25,6 @@ namespace UMR_UI.SampleData
         public string Name { get; set; }
         public string Vorname { get; set; }
         public string Uebungsmoment { get; set; }
+        public bool zweiWochenAlt { get; set; }
     }
 }

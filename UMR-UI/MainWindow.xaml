@@ -10,38 +10,109 @@
     <Window.DataContext>
         <local:UeMRHauptansichtSampleData/>
     </Window.DataContext>
-    
+
     <Grid>
 
         <TabControl Background="Gray">
+            
             <TabItem Header="Log-In">
                 
             </TabItem>
 
             <TabItem Header="Hauptansicht">
-                <DockPanel>
-                    <StackPanel>
-                        <Label>Teilnehmer Explorer</Label>
-                        <DataGrid ItemsSource="{Binding Teilnehmerliste}"
-                          AutoGenerateColumns="False">
-                            <DataGrid.Columns>
-                                <DataGridTextColumn Header="Übungsmoment"
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
+                            BorderBrush="Black"
+                            BorderThickness="3"
+                            CornerRadius="3">
+                        <Grid>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="8*"/>
+                                <RowDefinition Height="4*"/>
+                            </Grid.RowDefinitions>
+
+                            <Label Grid.Row="0"
+                                   FontWeight="ExtraBold"
+                                   HorizontalContentAlignment="Center"
+                                   VerticalContentAlignment="Top">
+                                Teilnehmer Explorer
+                            </Label>
+
+                            <StackPanel Grid.Row="1" 
+                                        Orientation="Horizontal">
+                                
+                                <TextBox Margin="5, 0"
+                                         VerticalContentAlignment="Center">
+                                    Suchbegriff eintragen
+                                </TextBox>
+                                
+                                <Button>
+                                    Suchen
+                                </Button>
+                                
+                            </StackPanel>
+                            
+                            <DataGrid Grid.Row="2"
+                                      ItemsSource="{Binding Teilnehmerliste}"
+                                      AutoGenerateColumns="False"
+                                      Background="Gray"
+                                      Margin="5">
+                                
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="¿" FontFamily="Wingdings"
+                                                           x:Name="Uhr"
+                                                           VerticalAlignment="Center"
+                                                           HorizontalAlignment="Center"
+                                                           Background="Green"
+                                                           ToolTip="Rot bedeutet älter als zwei Wochen"/>
+                                                <DataTemplate.Triggers>
+                                                    <DataTrigger Binding="{Binding zweiWochenAlt}" Value="True">
+                                                        <Setter TargetName="Uhr" Property="TextBlock.Background" Value="Red"/>
+                                                    </DataTrigger>
+                                                </DataTemplate.Triggers>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTextColumn Header="Übungsmoment"
                                             Binding="{Binding Uebungsmoment}"/>
-                                <DataGridTextColumn Header="Vorname"
+                                    <DataGridTextColumn Header="Vorname"
                                             Binding="{Binding Vorname}"/>
-                                <DataGridTextColumn Header="Nachname"
+                                    <DataGridTextColumn Header="Nachname"
                                             Binding="{Binding Name}"/>
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
+                                </DataGrid.Columns>
+                            </DataGrid>
 
-                    <StackPanel>
-                        <Label Content="{Binding UeMRTeilnehmerliste}"/>
-                        <ListBox ItemsSource="{Binding Path=UeMRTeilnehmerliste}" DisplayMemberPath="Name"
-                         IsSynchronizedWithCurrentItem="true"/>
-                    </StackPanel>
+                            <StackPanel Grid.Row="3">
+                                
+                                <Button>
+                                    Teilnehmer Löschen
+                                </Button>
+                                
+                            </StackPanel>
+                            
+                        </Grid>
+                        
+                    </Border>
 
-                </DockPanel>
+                    <Border Grid.Column="1"
+                            BorderBrush="Black"
+                            BorderThickness="3"
+                            CornerRadius="3">
+                        
+                    </Border>
+                </Grid>
             </TabItem>
 
             <TabItem Header="Statistik"></TabItem>
