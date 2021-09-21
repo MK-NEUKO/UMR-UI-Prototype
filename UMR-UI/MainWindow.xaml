@@ -5,36 +5,47 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UMR_UI.SampleData"
         mc:Ignorable="d"
-        Title="ÜMR-Hauptansicht" Height="450" Width="800">
+        Title="ÜbungsMomentReminder" Height="450" Width="800"
+        Background="LightGray">
     <Window.DataContext>
         <local:UeMRHauptansichtSampleData/>
     </Window.DataContext>
     
     <Grid>
 
-        <DockPanel>
-            <StackPanel>
-                <Label>Übungs Moment Teilnehmer</Label>
-                <DataGrid ItemsSource="{Binding Teilnehmerliste}"
-                          AutoGenerateColumns="False">
-                    <DataGrid.Columns>
-                        <DataGridTextColumn Header="Übungsmoment"
-                                            Binding="{Binding Uebungsmoment}"/>
-                        <DataGridTextColumn Header="Vorname"
-                                            Binding="{Binding Vorname}"/>
-                        <DataGridTextColumn Header="Nachname"
-                                            Binding="{Binding Name}"/>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </StackPanel>
+        <TabControl Background="Gray">
+            <TabItem Header="Log-In">
+                
+            </TabItem>
 
-            <StackPanel>
-                <Label Content="{Binding UeMRTeilnehmerliste}"/>
-                <ListBox ItemsSource="{Binding Path=UeMRTeilnehmerliste}" DisplayMemberPath="Name"
+            <TabItem Header="Hauptansicht">
+                <DockPanel>
+                    <StackPanel>
+                        <Label>Teilnehmer Explorer</Label>
+                        <DataGrid ItemsSource="{Binding Teilnehmerliste}"
+                          AutoGenerateColumns="False">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="Übungsmoment"
+                                            Binding="{Binding Uebungsmoment}"/>
+                                <DataGridTextColumn Header="Vorname"
+                                            Binding="{Binding Vorname}"/>
+                                <DataGridTextColumn Header="Nachname"
+                                            Binding="{Binding Name}"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+
+                    <StackPanel>
+                        <Label Content="{Binding UeMRTeilnehmerliste}"/>
+                        <ListBox ItemsSource="{Binding Path=UeMRTeilnehmerliste}" DisplayMemberPath="Name"
                          IsSynchronizedWithCurrentItem="true"/>
-            </StackPanel>
-            
-        </DockPanel>
+                    </StackPanel>
+
+                </DockPanel>
+            </TabItem>
+
+            <TabItem Header="Statistik"></TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
