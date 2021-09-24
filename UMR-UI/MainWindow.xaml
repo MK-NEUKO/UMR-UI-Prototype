@@ -3,21 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:UMR_UI.SampleData"
         mc:Ignorable="d"
-        Title="ÜbungsMomentReminder" Height="450" Width="800"
-        Background="LightGray">
-    <Window.DataContext>
-        <local:UeMRHauptansichtSampleData/>
-    </Window.DataContext>
+        Title="ÜbungsMomentReminder" Height="600" Width="1000"
+        Background="#404040">
 
     <Grid>
 
-        <TabControl Background="Gray">
-            
-            <TabItem Header="Log-In">
-                
-            </TabItem>
+        <TabControl Background="#404040">
+
+            <TabItem Header="Log-In"></TabItem>
 
             <TabItem Header="Hauptansicht">
                 <Grid>
@@ -26,44 +20,46 @@
                         <ColumnDefinition Width="4*"/>
                     </Grid.ColumnDefinitions>
 
-                    <Border Grid.Column="0"
-                            BorderBrush="Black"
-                            BorderThickness="3"
-                            CornerRadius="3">
+                    <Border Grid.Column="0">
                         <Grid>
 
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="8*"/>
-                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="2*"/>
                             </Grid.RowDefinitions>
 
-                            <Label Grid.Row="0"
-                                   FontWeight="ExtraBold"
-                                   HorizontalContentAlignment="Center"
-                                   VerticalContentAlignment="Top">
-                                Teilnehmer Explorer
-                            </Label>
+                            <TextBlock Grid.Row="0"
+                                       Text="Teilnehmer Explorer"
+                                       FontSize="30"
+                                       Background="#404040"
+                                       Foreground="LightGray"
+                                       HorizontalAlignment="Center"/>
 
                             <StackPanel Grid.Row="1" 
-                                        Orientation="Horizontal">
-                                
+                                        Orientation="Horizontal"
+                                        FlowDirection="RightToLeft">
+
+                                <Button Margin="5,0,0,0"
+                                        Content=""
+                                        Height="25" Width="25"
+                                        FontFamily="Segoe UI Symbol"
+                                        FontSize="14"/>
                                 <TextBox Margin="5, 0"
-                                         VerticalContentAlignment="Center">
-                                    Suchbegriff eintragen
-                                </TextBox>
-                                
-                                <Button>
-                                    Suchen
-                                </Button>
-                                
+                                         VerticalContentAlignment="Center"
+                                         Text="Suchbegriff hier eintragen"
+                                         Height="25"/>
+
                             </StackPanel>
                             
                             <DataGrid Grid.Row="2"
-                                      ItemsSource="{Binding Teilnehmerliste}"
+                                      x:Name="uebungsMomentTeilnehmerExplorer"
+                                      SelectionChanged="uebungsMomentTeilnehmerExplorer_SelectionChanged"
+                                      IsSynchronizedWithCurrentItem="True"
+                                      RowHeaderWidth="0"
                                       AutoGenerateColumns="False"
-                                      Background="Gray"
+                                      Background="#404040"
                                       Margin="5">
                                 
                                 <DataGrid.Columns>
@@ -108,14 +104,141 @@
 
                     <Border Grid.Column="1"
                             BorderBrush="Black"
-                            BorderThickness="3"
-                            CornerRadius="3">
-                        
+                            BorderThickness="3,0,0,0">
+                        <StackPanel>
+                            <TextBlock x:Name="vollerName"
+                                       FontSize="30"
+                                       Background="#404040"
+                                       Foreground="LightGray"
+                                       Margin="20,0"/>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0"
+                                            FlowDirection="RightToLeft">
+
+                                    <TextBlock Text="Vorname"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Name"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Email-Adresse"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Geburtsdatum"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Anmeldedatum"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1"                                            
+                                            FlowDirection="LeftToRight">
+
+                                    <TextBox x:Name="vorname"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="name"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="emailAdresse"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="geburtsdatum"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="anmeldedatum"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+
+                                </StackPanel>
+
+                            </Grid>
+
+                            <TextBlock x:Name="uebungsmomentBezeichnung"
+                                       FontSize="30"
+                                       Background="#404040"
+                                       Foreground="LightGray"
+                                       Text="Michael Koch"
+                                       Margin="20,10,0,0"/>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <StackPanel Grid.Column="0"
+                                            FlowDirection="RightToLeft">
+
+                                    <TextBlock Text="Beschreibung"
+                                               Height="75"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Tags"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Einzelbewertung"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+                                    <TextBlock Text="Gesamtbewertung"
+                                               Height="20"
+                                               Foreground="LightGray"/>
+
+                                </StackPanel>
+
+                                <StackPanel Grid.Column="1">
+
+                                    <TextBox x:Name="Beschreibung"
+                                             TextWrapping="Wrap"
+                                             Height="75"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="Tags"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="Einzelbewertung"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    <TextBox x:Name="Gesamtbewertung"
+                                             Height="20"
+                                             Background="WhiteSmoke"
+                                             Foreground="Black"
+                                             Margin="10,0"/>
+                                    
+                                </StackPanel>
+                                
+                            </Grid>
+                            
+                            
+                            
+                        </StackPanel>
                     </Border>
                 </Grid>
             </TabItem>
 
             <TabItem Header="Statistik"></TabItem>
+            <TabItem Header="Einstellungen"></TabItem>
         </TabControl>
 
     </Grid>
