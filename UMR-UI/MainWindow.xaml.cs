@@ -59,9 +59,8 @@ namespace UMR_UI
         }
 
         private void uebungsMomentTeilnehmerExplorer_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var ausgewählterTeilnehmer = new Teilnehmer();
-            ausgewählterTeilnehmer = (Teilnehmer)uebungsMomentTeilnehmerExplorer.SelectedItem;
+        {          
+            var ausgewählterTeilnehmer = (Teilnehmer)uebungsMomentTeilnehmerExplorer.SelectedItem;
             DetailViewZuruecksetzen();
             SetzeDetailView(ausgewählterTeilnehmer);
         }
@@ -87,26 +86,5 @@ namespace UMR_UI
             vollerName.Text = vorname.Text = name.Text = emailAdresse.Text = string.Empty;
 
         }
-    }
-
-    public class Teilnehmer
-    {
-        public string Name { get; set; }
-        public string Vorname { get; set; }
-        public string VollerName { get => Vorname + " " + Name; }
-        public string Emailadresse { get; set; }
-        public DateTime Geburtsdatum { get; set; }
-        public DateTime Anmeldedatum { get; set; }
-        public Uebungsmoment Uebungsmoment { get; set; }
-        public bool zweiWochenAlt { get; set; }
-    }
-
-    public class Uebungsmoment
-    {
-        public string Bezeichnung { get; set; }
-        public List<string> Tags { get; set; }
-        public string Beschreibung { get; set; }
-        public int EinzelBewertung { get; set; }
-        public double GesammtBewertung { get; set; }
     }
 }
