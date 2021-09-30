@@ -56,8 +56,8 @@ namespace UMR_UI
         public MainWindow()
         {
             InitializeComponent();
-            ICollectionView teilbehmerListCollectionView = CollectionViewSource.GetDefaultView(Teilnehmerliste);
-            DataContext = teilbehmerListCollectionView;
+            ICollectionView teilnehmerListCollectionView = CollectionViewSource.GetDefaultView(Teilnehmerliste);
+            DataContext = teilnehmerListCollectionView;
         }
     }
 }

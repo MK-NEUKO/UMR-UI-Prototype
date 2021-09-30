@@ -193,7 +193,7 @@
                                                Height="75"
                                                Foreground="LightGray"/>
                                     <TextBlock Text="Tags"
-                                               Height="20"
+                                               Height="75"
                                                Foreground="LightGray"/>
                                     <TextBlock Text="Einzelbewertung"
                                                Height="20"
@@ -212,8 +212,8 @@
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Uebungsmoment.Tags}"
-                                             Height="20"
+                                    <ListBox ItemsSource="{Binding Uebungsmoment.Tags}"
+                                             Height="75"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
