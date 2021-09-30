@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -55,36 +56,8 @@ namespace UMR_UI
         public MainWindow()
         {
             InitializeComponent();
-            uebungsMomentTeilnehmerExplorer.ItemsSource = Teilnehmerliste;
-        }
-
-        private void uebungsMomentTeilnehmerExplorer_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {          
-            var ausgewählterTeilnehmer = (Teilnehmer)uebungsMomentTeilnehmerExplorer.SelectedItem;
-            DetailViewZuruecksetzen();
-            SetzeDetailView(ausgewählterTeilnehmer);
-        }
-
-        private void SetzeDetailView(Teilnehmer ausgewählterTeilnehmer)
-        {
-            vollerName.Text = ausgewählterTeilnehmer.VollerName;
-            vorname.Text = ausgewählterTeilnehmer.Vorname;
-            name.Text = ausgewählterTeilnehmer.Name;
-            emailAdresse.Text = ausgewählterTeilnehmer.Emailadresse;
-            geburtsdatum.Text = ausgewählterTeilnehmer.Geburtsdatum.ToString();
-            anmeldedatum.Text = ausgewählterTeilnehmer.Anmeldedatum.ToString();
-
-            uebungsmomentBezeichnung.Text = ausgewählterTeilnehmer.Uebungsmoment.Bezeichnung;
-            Beschreibung.Text = ausgewählterTeilnehmer.Uebungsmoment.Beschreibung;
-            Tags.Text = String.Join(";  ", ausgewählterTeilnehmer.Uebungsmoment.Tags.ToArray());
-            Einzelbewertung.Text = ausgewählterTeilnehmer.Uebungsmoment.EinzelBewertung.ToString();
-            Gesamtbewertung.Text = ausgewählterTeilnehmer.Uebungsmoment.GesammtBewertung.ToString();
-        }
-
-        private void DetailViewZuruecksetzen()
-        {
-            vollerName.Text = vorname.Text = name.Text = emailAdresse.Text = string.Empty;
-
+            ICollectionView teilbehmerListCollectionView = CollectionViewSource.GetDefaultView(Teilnehmerliste);
+            DataContext = teilbehmerListCollectionView;
         }
     }
 }

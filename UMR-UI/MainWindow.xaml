@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:uc="clr-namespace:UMR_UI"
+        xmlns:local="clr-namespace:UMR_UI"
         mc:Ignorable="d"
         Title="ÜbungsMomentReminder" Height="600" Width="1000"
         Background="#404040">
@@ -13,7 +13,7 @@
         <TabControl Background="#404040">
 
             <TabItem Header="CollectionView">
-                <uc:CollectionView/>
+                <local:CollectionView/>
             </TabItem>
 
             <TabItem Header="Hauptansicht">
@@ -57,8 +57,8 @@
                             </StackPanel>
                             
                             <DataGrid Grid.Row="2"
-                                      x:Name="uebungsMomentTeilnehmerExplorer"
-                                      SelectionChanged="uebungsMomentTeilnehmerExplorer_SelectionChanged"
+                                      x:Name="dataGrid"
+                                      ItemsSource="{Binding}"
                                       IsSynchronizedWithCurrentItem="True"
                                       RowHeaderWidth="0"
                                       AutoGenerateColumns="False"
@@ -109,7 +109,7 @@
                             BorderBrush="Black"
                             BorderThickness="3,0,0,0">
                         <StackPanel>
-                            <TextBlock x:Name="vollerName"
+                            <TextBlock Text="{Binding VollerName}"
                                        FontSize="30"
                                        Background="#404040"
                                        Foreground="LightGray"
@@ -144,27 +144,27 @@
                                 <StackPanel Grid.Column="1"                                            
                                             FlowDirection="LeftToRight">
 
-                                    <TextBox x:Name="vorname"
+                                    <TextBox Text="{Binding Vorname}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="name"
+                                    <TextBox Text="{Binding Name}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="emailAdresse"
+                                    <TextBox Text="{Binding Emailadresse}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="geburtsdatum"
+                                    <TextBox Text="{Binding Geburtsdatum}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="anmeldedatum"
+                                    <TextBox Text="{Binding Anmeldedatum}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
@@ -174,11 +174,10 @@
 
                             </Grid>
 
-                            <TextBlock x:Name="uebungsmomentBezeichnung"
+                            <TextBlock Text="{Binding Uebungsmoment.Bezeichnung}"
                                        FontSize="30"
                                        Background="#404040"
                                        Foreground="LightGray"
-                                       Text="Michael Koch"
                                        Margin="20,10,0,0"/>
 
                             <Grid>
@@ -207,23 +206,23 @@
 
                                 <StackPanel Grid.Column="1">
 
-                                    <TextBox x:Name="Beschreibung"
+                                    <TextBox Text="{Binding Uebungsmoment.Beschreibung}"
                                              TextWrapping="Wrap"
                                              Height="75"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="Tags"
+                                    <TextBox Text="{Binding Uebungsmoment.Tags}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="Einzelbewertung"
+                                    <TextBox Text="{Binding Uebungsmoment.EinzelBewertung}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox x:Name="Gesamtbewertung"
+                                    <TextBox Text="{Binding Uebungsmoment.GesammtBewertung}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"

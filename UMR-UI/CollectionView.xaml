@@ -19,8 +19,8 @@
                      DisplayMemberPath="Vorname"
                      IsSynchronizedWithCurrentItem="True"/>
             <StackPanel>
-                <TextBox Text="{Binding Vorname}"/>
-                <TextBox Text="{Binding Name}"/>
+                <TextBox Text="{Binding /Vorname}"/>
+                <TextBox Text="{Binding /Name}"/>
             </StackPanel>
         </DockPanel>   
     </Grid>
