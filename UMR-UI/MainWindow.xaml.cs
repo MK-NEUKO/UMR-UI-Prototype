@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UMR_UI
+namespace MichaelKoch.UeMR.UI
 {
     public partial class MainWindow : Window
     {
@@ -35,7 +35,7 @@ namespace UMR_UI
             EinzelBewertung = 3,
             GesammtBewertung = 3.9
         };
-        public List<Teilnehmer> Teilnehmerliste { get; set; } = new()
+        public TeilnehmerListe Teilnehmerliste { get; set; } = new()
         {
             new Teilnehmer { Name = "Koch", Vorname = "Michael", Emailadresse = "email@adresse.wo", Geburtsdatum = new(2000, 05, 20), Anmeldedatum = DateTime.Now, Uebungsmoment = UebungsMoment21von21, zweiWochenAlt = true, },
             new Teilnehmer { Name = "Peter", Vorname = "Michael", Emailadresse = "hallo@adresse.wo", Geburtsdatum = new(1956, 02, 15), Anmeldedatum = DateTime.Now, Uebungsmoment = UebungsMoment250 },
@@ -52,6 +52,9 @@ namespace UMR_UI
             new Teilnehmer { Name = "Weise", Vorname = "Bernhard", Emailadresse = "salatbar@adresse.wo", Geburtsdatum = new(1992, 12, 01), Anmeldedatum = DateTime.Now, Uebungsmoment = UebungsMoment21von21, zweiWochenAlt = true },
             new Teilnehmer { Name = "Maul", Vorname = "Giesberth", Emailadresse = "ichweissauchnicht@adresse.wo", Geburtsdatum = new(1992, 07, 02), Anmeldedatum = DateTime.Now, Uebungsmoment = UebungsMoment250, zweiWochenAlt = true },
         };
+
+        
+        
 
         public MainWindow()
         {

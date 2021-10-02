@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UMR_UI
+namespace MichaelKoch.UeMR.UI
 {
     /// <summary>
     /// Interaction logic for CollectionView.xaml

@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
-    <RootNamespace>UMR_UI</RootNamespace>
+    <RootNamespace>MichaelKoch.UeMR.UI</RootNamespace>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 

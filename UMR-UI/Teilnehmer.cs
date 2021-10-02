@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace UMR_UI
+namespace MichaelKoch.UeMR.UI
 {
     public class Teilnehmer
     {

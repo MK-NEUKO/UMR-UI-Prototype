@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace UMR_UI
+namespace MichaelKoch.UeMR.UI
 {
     public class Uebungsmoment
     {
