@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MichaelKoch.UeMR.UI
+namespace MichaelKoch.UeMR.UI.Model
 {
     public class Teilnehmer
     {

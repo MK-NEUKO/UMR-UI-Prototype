@@ -3,20 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MichaelKoch.UeMR.UI"
+        xmlns:vm="clr-namespace:MichaelKoch.UeMR.UI.ViewModel"
         mc:Ignorable="d"
         Title="ÜbungsMomentReminder" Height="600" Width="1000"
         Background="#404040">
+    <Window.Resources>
+        <SolidColorBrush x:Key="AppBackground" Color="#262626"/>
 
+        <vm:HauptansichtViewModel x:Key="HauptansichtViewModel"/>
+    </Window.Resources>
     <Grid>
 
-        <TabControl Background="#42ffc0">
+        <TabControl Background="{StaticResource AppBackground}">
 
-            <TabItem Header="CollectionView">
-                <local:CollectionView/>
-            </TabItem>
+            <TabItem Header="LogIn"/>
 
-            <TabItem Header="Hauptansicht">
+            <TabItem Header="Hauptansicht"
+                     DataContext="{StaticResource HauptansichtViewModel}">
+                
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
@@ -58,7 +62,7 @@
                             
                             <DataGrid Grid.Row="2"
                                       x:Name="dataGrid"
-                                      ItemsSource="{Binding}"
+                                      ItemsSource="{Binding TeilnehmerListe}"
                                       IsSynchronizedWithCurrentItem="True"
                                       RowHeaderWidth="0"
                                       AutoGenerateColumns="False"
@@ -85,7 +89,7 @@
                                     </DataGridTemplateColumn>
 
                                     <DataGridTextColumn Header="Übungsmoment"
-                                            Binding="{Binding Uebungsmoment}"/>
+                                            Binding="{Binding Uebungsmoment.Bezeichnung}"/>
                                     <DataGridTextColumn Header="Vorname"
                                             Binding="{Binding Vorname}"/>
                                     <DataGridTextColumn Header="Nachname"
@@ -109,7 +113,7 @@
                             BorderBrush="Black"
                             BorderThickness="3,0,0,0">
                         <StackPanel>
-                            <TextBlock Text="{Binding VollerName}"
+                            <TextBlock Text="{Binding TeilnehmerListe/VollerName}"
                                        FontSize="30"
                                        Background="#404040"
                                        Foreground="LightGray"
@@ -144,27 +148,27 @@
                                 <StackPanel Grid.Column="1"                                            
                                             FlowDirection="LeftToRight">
 
-                                    <TextBox Text="{Binding Vorname}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Vorname}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Name}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Name}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Emailadresse}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Emailadresse}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Geburtsdatum}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Geburtsdatum}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Anmeldedatum}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Anmeldedatum}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
@@ -174,7 +178,7 @@
 
                             </Grid>
 
-                            <TextBlock Text="{Binding Uebungsmoment.Bezeichnung}"
+                            <TextBlock Text="{Binding TeilnehmerListe/Uebungsmoment.Bezeichnung}"
                                        FontSize="30"
                                        Background="#404040"
                                        Foreground="LightGray"
@@ -206,23 +210,23 @@
 
                                 <StackPanel Grid.Column="1">
 
-                                    <TextBox Text="{Binding Uebungsmoment.Beschreibung}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Uebungsmoment.Beschreibung}"
                                              TextWrapping="Wrap"
                                              Height="75"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <ListBox ItemsSource="{Binding Uebungsmoment.Tags}"
+                                    <ListBox ItemsSource="{Binding TeilnehmerListe/Uebungsmoment.Tags}"
                                              Height="75"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Uebungsmoment.EinzelBewertung}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Uebungsmoment.EinzelBewertung}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
                                              Margin="10,0"/>
-                                    <TextBox Text="{Binding Uebungsmoment.GesammtBewertung}"
+                                    <TextBox Text="{Binding TeilnehmerListe/Uebungsmoment.GesammtBewertung}"
                                              Height="20"
                                              Background="WhiteSmoke"
                                              Foreground="Black"
